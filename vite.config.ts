@@ -14,5 +14,5 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/random-generator/",
+  base: "/pao-tutor/",
 });
