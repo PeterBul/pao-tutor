@@ -10,6 +10,7 @@ const checkNumber = (trueValue: number, inputValue: number) => {
 
 export const Validation = ({ numbers }: IProps) => {
   const numberRefs = useRef<HTMLInputElement[]>([]);
+  const checkAnswersRef = useRef<HTMLButtonElement>(null);
   const [validatedNumbers, setValidatedNumbers] = useState<boolean[]>([]);
 
   const checkAnswers = () => {
@@ -70,11 +71,24 @@ export const Validation = ({ numbers }: IProps) => {
             type="number"
             min={0}
             max={100}
-            onChange={checkInputs}
+            onChange={(e) => {
+              if (e.target.valueAsNumber > 9) {
+                if (index + 1 < numbers.length) {
+                  numberRefs.current[index + 1].focus();
+                } else {
+                  checkAnswersRef.current?.focus();
+                }
+              }
+              checkInputs();
+            }}
           />
         ))}
       </div>
-      <button disabled={!allNumbersHaveInput} onClick={checkAnswers}>
+      <button
+        ref={checkAnswersRef}
+        disabled={!allNumbersHaveInput}
+        onClick={checkAnswers}
+      >
         Check answer
       </button>
     </div>
