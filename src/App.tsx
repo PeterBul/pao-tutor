@@ -1,13 +1,11 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./App.css";
+import { NumberWalkthroughDisplay, Validation } from "./components";
 
 function App() {
-  const [numbers, setNumbers] = useState<number[]>([]);
-  const [currentNumberIndex, setCurrentNumberIndex] = useState(0);
-  const remainingNumbers = numbers.length - currentNumberIndex - 1;
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [validation, setValidation] = useState<string | null>(null);
+  const [numbersToRemember, setNumbersToRemember] = useState<number[]>([]);
   const [testing, setTesting] = useState(false);
+  const [validation, setValidation] = useState<boolean | null>(null);
 
   const n = 10;
 
@@ -16,81 +14,30 @@ function App() {
       <button
         className="mb-1"
         onClick={() => {
-          setCurrentNumberIndex(0);
           setValidation(null);
           setTesting(false);
           const newNumbers: number[] = [];
           for (let i = 0; i < n; i++) {
             newNumbers.push(generateRandomNumber(newNumbers, 0, 100));
           }
-          setNumbers(newNumbers);
+          setNumbersToRemember(newNumbers);
         }}
       >
         Generate new random numbers
       </button>
-      {!testing && (
-        <div className="number-to-remember-wrapper">
-          <span className="font-large">
-            {numbers[currentNumberIndex]?.toFixed(0)}
-          </span>
-          {remainingNumbers > 0 ? (
-            <button
-              className="mb-1"
-              onClick={() => {
-                if (currentNumberIndex < numbers.length - 1) {
-                  setCurrentNumberIndex(currentNumberIndex + 1);
-                }
-              }}
-            >
-              Next
-            </button>
-          ) : (
-            remainingNumbers === 0 && (
-              <button
-                onClick={() => {
-                  setTesting(true);
-                }}
-              >
-                Start testing
-              </button>
-            )
-          )}
-          {remainingNumbers !== -1 && `Remaining numbers: ${remainingNumbers}`}
-        </div>
+      {!testing && validation === null && (
+        <NumberWalkthroughDisplay
+          numbersToRemember={numbersToRemember}
+          onStartTesting={() => {
+            setTesting(true);
+          }}
+        />
       )}
-      {testing && (
+      {testing && <Validation numbers={numbersToRemember} />}
+      {/* For now this is not used */}
+      {validation !== null && (
         <div className="validation">
-          {validation ? (
-            validation
-          ) : (
-            <>
-              <input ref={inputRef} />
-              <button
-                onClick={() => {
-                  if (!inputRef.current) {
-                    throw new Error("Input ref is not defined");
-                  }
-                  const inputValues = inputRef.current.value
-                    .split(" ")
-                    .map(Number);
-                  let correct = true;
-                  for (let i = 0; i < numbers.length; i++) {
-                    if (numbers[i].toFixed(0) !== inputValues[i].toFixed(0)) {
-                      correct = false;
-                      break;
-                    }
-                  }
-                  if (correct) {
-                    setValidation("Correct 🎉");
-                  } else {
-                    setValidation("Incorrect!");
-                  }
-                }}
-              >
-                Check answer
-              </button>
-            </>
-          )}
+          {validation ? "Correct 🎉" : "Incorrect!"}
         </div>
       )}
     </div>
@@ -110,4 +57,3 @@ const generateRandomNumber = (
 };
 
 export default App;
-

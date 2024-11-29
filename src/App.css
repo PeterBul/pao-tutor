@@ -1,3 +1,16 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
 .outer-wrapper {
   display: flex;
   flex-direction: column;
@@ -28,5 +41,29 @@
 .validation {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1em;
+}
+
+.numbers-input {
+  display: flex;
+  gap: 0.5em;
+}
+
+.numbers-input input {
+  width: 2em;
+  height: 2em;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 4px;
+  background: #3b3b3b;
+  border: 1px solid #acacac;
+}
+
+.numbers-input .wrong {
+  border: 1px solid #b41612;
+}
+
+.numbers-input .correct {
+  border: 1px solid #0f9d58;
 }
