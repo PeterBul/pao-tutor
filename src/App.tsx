@@ -10,37 +10,44 @@ function App() {
   const n = 10;
 
   return (
-    <div className="outer-wrapper">
-      <button
-        className="mb-1"
-        onClick={() => {
-          setValidation(null);
-          setTesting(false);
-          const newNumbers: number[] = [];
-          for (let i = 0; i < n; i++) {
-            newNumbers.push(generateRandomNumber(newNumbers, 0, 100));
-          }
-          setNumbersToRemember(newNumbers);
-        }}
-      >
-        Generate new random numbers
-      </button>
-      {!testing && validation === null && (
-        <NumberWalkthroughDisplay
-          numbersToRemember={numbersToRemember}
-          onStartTesting={() => {
-            setTesting(true);
+    <>
+      <div className="outer-wrapper">
+        <button
+          className="mb-1"
+          onClick={() => {
+            setValidation(null);
+            setTesting(false);
+            const newNumbers: number[] = [];
+            for (let i = 0; i < n; i++) {
+              newNumbers.push(generateRandomNumber(newNumbers, 0, 100));
+            }
+            setNumbersToRemember(newNumbers);
           }}
-        />
-      )}
-      {testing && <Validation numbers={numbersToRemember} />}
-      {/* For now this is not used */}
-      {validation !== null && (
-        <div className="validation">
-          {validation ? "Correct 🎉" : "Incorrect!"}
-        </div>
-      )}
-    </div>
+        >
+          Generate new random numbers
+        </button>
+        {!testing && validation === null && (
+          <NumberWalkthroughDisplay
+            numbersToRemember={numbersToRemember}
+            onStartTesting={() => {
+              setTesting(true);
+            }}
+          />
+        )}
+        {testing && <Validation numbers={numbersToRemember} />}
+        {/* For now this is not used */}
+        {validation !== null && (
+          <div className="validation">
+            {validation ? "Correct 🎉" : "Incorrect!"}
+          </div>
+        )}
+      </div>
+      <div className="attributions">
+        <a href="https://www.vecteezy.com/free-vector/lottery-machine">
+          Lottery Machine Vectors by Vecteezy
+        </a>
+      </div>
+    </>
   );
 }
 

@@ -69,3 +69,17 @@ input[type=number] {
 .numbers-input .correct {
   border: 1px solid #0f9d58;
 }
+
+.attributions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: small;
+  padding: 1em;
+  color: #fff;
+  text-align: right;
+  a {
+    font-weight: 400;
+  }
+}
