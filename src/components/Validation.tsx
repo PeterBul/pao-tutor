@@ -72,7 +72,7 @@ export const Validation = ({ numbers }: IProps) => {
             min={0}
             max={100}
             onChange={(e) => {
-              if (e.target.valueAsNumber > 9) {
+              if (e.target.valueAsNumber > 9 || e.target.value.length > 1) {
                 if (index + 1 < numbers.length) {
                   numberRefs.current[index + 1].focus();
                 } else {
