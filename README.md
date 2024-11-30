@@ -1,5 +1,7 @@
 # PAO Tutor
 
+Go to https://peterbul.github.io/pao-tutor/ for the deployed application
+
 A very simple project for doing daily memory practice.
 
 10 numbers are generated and cycled through. It is not possible to go back to a previous number. Once everything is cycled through, the goal is to remember as many as possible.
