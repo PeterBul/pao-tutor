@@ -56,7 +56,7 @@ const generateRandomNumber = (
   from: number,
   to: number
 ): number => {
-  const newNumber = Math.random() * (to - from) + from;
+  const newNumber = Math.trunc(Math.random() * (to - from) + from);
   if (prevNumbers.includes(newNumber)) {
     return generateRandomNumber(prevNumbers, from, to);
   }

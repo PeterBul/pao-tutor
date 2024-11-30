@@ -5,7 +5,7 @@ interface IProps {
 }
 
 const checkNumber = (trueValue: number, inputValue: number) => {
-  return trueValue.toFixed(0) === inputValue.toFixed(0);
+  return trueValue === inputValue;
 };
 
 export const Validation = ({ numbers }: IProps) => {

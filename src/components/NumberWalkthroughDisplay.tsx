@@ -13,7 +13,7 @@ export const NumberWalkthroughDisplay = ({
   return (
     <div className="number-to-remember-wrapper">
       <span className="font-large">
-        {numbersToRemember[currentNumberIndex]?.toFixed(0)}
+        {numbersToRemember[currentNumberIndex]}
       </span>
       {remainingNumbers > 0 ? (
         <button
