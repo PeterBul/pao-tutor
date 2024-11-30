@@ -4,7 +4,7 @@ A very simple project for doing daily memory practice.
 
 10 numbers are generated and cycled through. It is not possible to go back to a previous number. Once everything is cycled through, the goal is to remember as many as possible.
 
-Remembering the 10 numbers is not really that difficult. The goal is to actually practice daly review of 10 of my PAO system associations. Remembering numbers is a good way to put the use of the associations into practice. The goal is therefore to have associations come faster. Every day.
+Remembering the 10 numbers is not really that difficult. The goal is to actually practice daily review of 10 of my PAO (Person Action Object) system associations. Remembering numbers is a good way to put the use of the associations into practice. The goal is therefore to have associations come faster.
 
 ## Why not dynamic number of values
 
